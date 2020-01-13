@@ -207,6 +207,14 @@ for teachers in subjectteachers.keys():
     if(len(subjectteachers[teachers][3]) != 0):
         teachersWhoHaveClassesInFourthYear.append(
             teachers)
+totalTeachersAvailableForFirstYear = len(teachersWhoHaveClassesInFirstYear)
+totalTeachersAvailableForSecondYear = len(teachersWhoHaveClassesInSecondYear)
+totalTeachersAvailableForThirdYear = len(teachersWhoHaveClassesInThirdYear)
+totalTeachersAvailableForFourthYear = len(teachersWhoHaveClassesInFourthYear)
+print(teachersWhoHaveClassesInFirstYear, teachersWhoHaveClassesInSecondYear,
+      teachersWhoHaveClassesInThirdYear, teachersWhoHaveClassesInFourthYear)
+print(totalTeachersAvailableForFirstYear, totalTeachersAvailableForSecondYear,
+      totalTeachersAvailableForThirdYear, totalTeachersAvailableForFourthYear)
 
 
 def generateDailyRoutine():

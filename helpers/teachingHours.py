@@ -259,50 +259,58 @@ def teacherSelectionForFourthYear(period):
 
 
 def routineMaker(period):
+    periodsForFirstYear = period % totalTeachersAvailableForFirstYear
+    periodsForSecondYear = period % totalTeachersAvailableForSecondYear
+    periodsForThirdYear = period % totalTeachersAvailableForThirdYear
+    periodsForFourthYear = period % totalTeachersAvailableForFourthYear
 
-    teacherSelectionForFirstYear(period)
-    teacherSelectionForSecondYear(period)
-    teacherSelectionForThirdYear(period)
-    teacherSelectionForFourthYear(period)
+    teacherSelectionForFirstYear(periodsForFirstYear)
+    teacherSelectionForSecondYear(periodsForSecondYear)
+    teacherSelectionForThirdYear(periodsForThirdYear)
+    teacherSelectionForFourthYear(periodsForFourthYear)
     print("  ")
 
 
 def checkForDuplicationOfTeacherInMultipleClassesInSamePeriod(period):
-    teacherInFirstYear = teachersWhoHaveClassesInFirstYear[period]
-    teacherInSecondYear = teachersWhoHaveClassesInSecondYear[period]
-    teacherInThirdYear = teachersWhoHaveClassesInThirdYear[period]
-    teacherInFourthYear = teachersWhoHaveClassesInFourthYear[period]
+    periodsForFirstYear = period % totalTeachersAvailableForFirstYear
+    periodsForSecondYear = period % totalTeachersAvailableForSecondYear
+    periodsForThirdYear = period % totalTeachersAvailableForThirdYear
+    periodsForFourthYear = period % totalTeachersAvailableForFourthYear
+    teacherInFirstYear = teachersWhoHaveClassesInFirstYear[periodsForFirstYear]
+    teacherInSecondYear = teachersWhoHaveClassesInSecondYear[periodsForSecondYear]
+    teacherInThirdYear = teachersWhoHaveClassesInThirdYear[periodsForThirdYear]
+    teacherInFourthYear = teachersWhoHaveClassesInFourthYear[periodsForFourthYear]
     if(teacherInFirstYear == teacherInSecondYear or teacherInFirstYear == teacherInThirdYear or teacherInFirstYear == teacherInFourthYear or teacherInSecondYear == teacherInThirdYear or teacherInSecondYear == teacherInFourthYear or teacherInThirdYear == teacherInFourthYear):
         if(teacherInFirstYear == teacherInSecondYear):
-            teacherSelectionForFirstYear(period)
-            teacherSelectionForSecondYear(period+1)
-            teacherSelectionForThirdYear(period)
-            teacherSelectionForFourthYear(period)
+            teacherSelectionForFirstYear(periodsForFirstYear)
+            teacherSelectionForSecondYear(periodsForSecondYear+1)
+            teacherSelectionForThirdYear(periodsForThirdYear)
+            teacherSelectionForFourthYear(periodsForFourthYear)
         elif(teacherInFirstYear == teacherInThirdYear):
-            teacherSelectionForFirstYear(period)
-            teacherSelectionForSecondYear(period)
-            teacherSelectionForThirdYear(period+1)
-            teacherSelectionForFourthYear(period)
+            teacherSelectionForFirstYear(periodsForFirstYear)
+            teacherSelectionForSecondYear(periodsForSecondYear)
+            teacherSelectionForThirdYear(periodsForThirdYear+1)
+            teacherSelectionForFourthYear(periodsForFourthYear)
         elif(teacherInFirstYear == teacherInFourthYear):
-            teacherSelectionForFirstYear(period)
-            teacherSelectionForSecondYear(period)
-            teacherSelectionForThirdYear(period)
-            teacherSelectionForFourthYear(period+1)
+            teacherSelectionForFirstYear(periodsForFirstYear)
+            teacherSelectionForSecondYear(periodsForSecondYear)
+            teacherSelectionForThirdYear(periodsForThirdYear)
+            teacherSelectionForFourthYear(periodsForFourthYear+1)
         elif(teacherInSecondYear == teacherInThirdYear):
-            teacherSelectionForFirstYear(period)
-            teacherSelectionForSecondYear(period)
-            teacherSelectionForThirdYear(period+1)
-            teacherSelectionForFourthYear(period)
+            teacherSelectionForFirstYear(periodsForFirstYear)
+            teacherSelectionForSecondYear(periodsForSecondYear)
+            teacherSelectionForThirdYear(periodsForThirdYear+1)
+            teacherSelectionForFourthYear(periodsForFourthYear)
         elif(teacherInSecondYear == teacherInFourthYear):
-            teacherSelectionForFirstYear(period)
-            teacherSelectionForSecondYear(period)
-            teacherSelectionForThirdYear(period)
-            teacherSelectionForFourthYear(period+1)
+            teacherSelectionForFirstYear(periodsForFirstYear)
+            teacherSelectionForSecondYear(periodsForSecondYear)
+            teacherSelectionForThirdYear(periodsForThirdYear)
+            teacherSelectionForFourthYear(periodsForFourthYear+1)
         elif(teacherInThirdYear == teacherInFourthYear):
-            teacherSelectionForFirstYear(period)
-            teacherSelectionForSecondYear(period)
-            teacherSelectionForThirdYear(period)
-            teacherSelectionForFourthYear(period+1)
+            teacherSelectionForFirstYear(periodsForFourthYear)
+            teacherSelectionForSecondYear(periodsForSecondYear)
+            teacherSelectionForThirdYear(periodsForThirdYear)
+            teacherSelectionForFourthYear(periodsForFourthYear+1)
     else:
         routineMaker(period)
 
@@ -316,14 +324,14 @@ def teachingHoursBasedRoutine():
 
 
 Days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
-for daysOfWeek in range(1, 7):
+for daysOfWeek in range(0, 6):
     print("   ")
 
     print("ROUTINE FOR {0}".format(
-        Days[daysOfWeek-1]
+        Days[daysOfWeek]
     ))
     print("   ")
-    for periodsInAday in range(1, 7):
+    for periodsInAday in range(daysOfWeek*4, daysOfWeek*4+4):
 
         print("PERIOD : {0}".format(periodsInAday))
         checkForDuplicationOfTeacherInMultipleClassesInSamePeriod(
@@ -334,7 +342,6 @@ totalTeachersAvailableForFirstYear = len(teachersWhoHaveClassesInFirstYear)
 totalTeachersAvailableForSecondYear = len(teachersWhoHaveClassesInSecondYear)
 totalTeachersAvailableForThirdYear = len(teachersWhoHaveClassesInThirdYear)
 totalTeachersAvailableForFourthYear = len(teachersWhoHaveClassesInFourthYear)
-
 
 for days in range(0, 6):
     for inner in range(days*4, days*4+4):

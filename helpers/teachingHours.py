@@ -323,6 +323,11 @@ def teachingHoursBasedRoutine():
     print("hard one")
 
 
+totalTeachersAvailableForFirstYear = len(teachersWhoHaveClassesInFirstYear)
+totalTeachersAvailableForSecondYear = len(teachersWhoHaveClassesInSecondYear)
+totalTeachersAvailableForThirdYear = len(teachersWhoHaveClassesInThirdYear)
+totalTeachersAvailableForFourthYear = len(teachersWhoHaveClassesInFourthYear)
+
 Days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
 for daysOfWeek in range(0, 6):
     print("   ")
@@ -337,11 +342,6 @@ for daysOfWeek in range(0, 6):
         checkForDuplicationOfTeacherInMultipleClassesInSamePeriod(
             periodsInAday)
 
-
-totalTeachersAvailableForFirstYear = len(teachersWhoHaveClassesInFirstYear)
-totalTeachersAvailableForSecondYear = len(teachersWhoHaveClassesInSecondYear)
-totalTeachersAvailableForThirdYear = len(teachersWhoHaveClassesInThirdYear)
-totalTeachersAvailableForFourthYear = len(teachersWhoHaveClassesInFourthYear)
 
 for days in range(0, 6):
     for inner in range(days*4, days*4+4):

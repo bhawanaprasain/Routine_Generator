@@ -207,14 +207,6 @@ for teachers in subjectteachers.keys():
     if(len(subjectteachers[teachers][3]) != 0):
         teachersWhoHaveClassesInFourthYear.append(
             teachers)
-totalTeachersAvailableForFirstYear = len(teachersWhoHaveClassesInFirstYear)
-totalTeachersAvailableForSecondYear = len(teachersWhoHaveClassesInSecondYear)
-totalTeachersAvailableForThirdYear = len(teachersWhoHaveClassesInThirdYear)
-totalTeachersAvailableForFourthYear = len(teachersWhoHaveClassesInFourthYear)
-print(teachersWhoHaveClassesInFirstYear, teachersWhoHaveClassesInSecondYear,
-      teachersWhoHaveClassesInThirdYear, teachersWhoHaveClassesInFourthYear)
-print(totalTeachersAvailableForFirstYear, totalTeachersAvailableForSecondYear,
-      totalTeachersAvailableForThirdYear, totalTeachersAvailableForFourthYear)
 
 
 def generateDailyRoutine():
@@ -321,8 +313,6 @@ def countTeachingHoursOfASubject():
 
 def teachingHoursBasedRoutine():
     print("hard one")
-    # for period in range(1, 7):
-    #     checkForDuplicationOfTeacherInMultipleClassesInSamePeriod(period)
 
 
 Days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
@@ -338,3 +328,21 @@ for daysOfWeek in range(1, 7):
         print("PERIOD : {0}".format(periodsInAday))
         checkForDuplicationOfTeacherInMultipleClassesInSamePeriod(
             periodsInAday)
+
+
+totalTeachersAvailableForFirstYear = len(teachersWhoHaveClassesInFirstYear)
+totalTeachersAvailableForSecondYear = len(teachersWhoHaveClassesInSecondYear)
+totalTeachersAvailableForThirdYear = len(teachersWhoHaveClassesInThirdYear)
+totalTeachersAvailableForFourthYear = len(teachersWhoHaveClassesInFourthYear)
+
+
+for days in range(0, 6):
+    for inner in range(days*4, days*4+4):
+        print(
+            teachersWhoHaveClassesInFirstYear[inner % totalTeachersAvailableForFirstYear])
+        print(
+            teachersWhoHaveClassesInSecondYear[inner % totalTeachersAvailableForSecondYear])
+        print(
+            teachersWhoHaveClassesInThirdYear[inner % totalTeachersAvailableForThirdYear])
+        print(teachersWhoHaveClassesInFourthYear[inner %
+                                                 totalTeachersAvailableForFourthYear])

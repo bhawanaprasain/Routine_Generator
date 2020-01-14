@@ -3,28 +3,29 @@
 import random
 
 teachingHoursForASubject = {
+
     "Mathematics I": 8,
     "Computer Programming": 8,
     "Engineering Drawing I": 8,
     "Engineering Physics": 8,
     "Applied Mechanics": 8,
     "Basic Electrical Engineering": 8,
-    " Mathematics III ": 8,
-    "Object Oriented Programming ": 8,
-    "Electrical Circuit Theory ": 8,
+    "Mathematics II": 8,
+    "Object Oriented Programming": 8,
+    "Electrical Circuit Theory": 8,
     "Theory of Computation": 8,
     "Electronics Devices and Circuit": 8,
-    "Digital Logic ": 8,
-    "Electromagnetism ": 8,
-    "Communication English ": 8,
+    "Digital Logic": 8,
+    "Electromagnetism": 8,
+    "Communication English": 8,
     "Probability and Statistics": 8,
     "Computer organization and Architecture": 8,
     "Software Engineering": 8,
     "Computer Graphics": 8,
-    "Instrumentation II ": 8,
-    "Data Communication ": 8,
-    " ICT Project Management": 8,
-    "Organization and Management": 8,
+    "Instrumentation II": 8,
+    "Data Communication": 8,
+    "ICT Project Management": 8,
+    "Organization And Management": 8,
     "Energy Environment and Society": 8,
     "Distributed System": 8,
     "Computer Networks and Security": 8,
@@ -113,29 +114,30 @@ firstYearSubjects = [
     "Engineering Physics",
     "Applied Mechanics",
     "Basic Electrical Engineering",
+
 ]
 secondYearSubjects = [
-    " Mathematics III ",
-    "Object Oriented Programming ",
-    "Electrical Circuit Theory ",
+    "Mathematics II",
+    "Object Oriented Programming",
+    "Electrical Circuit Theory",
     "Theory of Computation",
     "Electronics Devices and Circuit",
-    "Digital Logic ",
-    "Electromagnetism "
+    "Digital Logic",
+    "Electromagnetism"
 
 ]
 thirdYearSubjects = [
-    "Communication English ",
+    "Communication English",
     "Probability and Statistics",
     "Computer organization and Architecture",
     "Software Engineering",
     "Computer Graphics",
-    "Instrumentation II ",
+    "Instrumentation II",
     "Data Communication "
 ]
 fourthYearSubjects = [
-    " ICT Project Management",
-    "Organization and Management",
+    "ICT Project Management",
+    "Organization And Management",
     "Energy Environment and Society",
     "Distributed System",
     "Computer Networks and Security",
@@ -145,33 +147,33 @@ fourthYearSubjects = [
 ]
 
 subjectteachers = {
-    "HPB": ["C Programming", "",  "Computer Graphics", ""],
-    "UB": ["", "TOC", "", ""],
-    "SRP": ["", "OOP", "Software Engineering", ""],
+    "HPB": ["Computer Programming", "",  "Computer Graphics", ""],
+    "UB": ["", "Theory of Computation", "", ""],
+    "SRP": ["", "Object Oriented Programming", "Software Engineering", ""],
     "ST": ["", "", "Instrumentation II", ""],
     "HNT": ["", "Digital Logic", "Data Communication", ""],
     "NL": ["", "", "", "ICT Project Management"],
-    "BRT": ["Physics", "", "", "DSAP"],
-    "SS": ["", "ECT", "", ""],
-    "HKC": ["", "", "COA", "Elective I"],
-    "BRB": ["BEE", "", "", ""],
-    "PP": ["Mathematics I", "", "PS", ""],
+    "BRT": ["Engineering Physics", "", "", "Digital Signal Analysis and Processing"],
+    "SS": ["", "Electrical Circuit Theory", "", ""],
+    "HKC": ["", "", "Computer organization and Architecture", "Elective I"],
+    "BRB": ["Basic Electrical Engineering", "", "", ""],
+    "PP": ["Mathematics I", "", "Probability and Statistics", ""],
     "BP": ["Applied Mechanics", "", "", ""],
-    "KRK": ["", "EDC", "", ""],
-    "HT": ["", "EM", "", ""],
+    "KRK": ["", "Electronics Devices and Circuit", "", ""],
+    "HT": ["", "Electromagnetism", "", ""],
     "BN": ["", "", "Communication English", ""],
     "SN": ["", "", "Communication English", ""],
-    "SRT": ["", "", "", "CNS"],
+    "SRT": ["", "", "", "Computer Networks and Security"],
     "BHP": ["", "", "", "Distributed System"],
     "RPP": ["", "", "", "Energy Environment and Society"],
     "RT": ["", "", "", "Organization And Management"],
     "TNU": ["Mathematics I", "Mathematics II", "", ""],
     "AA": ["Mathematics I", "Mathematics II", "", ""],
     "SSM": ["Mathematics I", "Mathematics II", "", ""],
-    "AKS": ["Physics", "", "", ""],
-    "KRS": ["Physics", "", "", ""],
-    "KP": ["Engineering Drawing", "", "", ""],
-    "BRBD": ["Engineering Drawing", "", "", ""]
+    "AKS": ["Engineering Physics", "", "", ""],
+    "KRS": ["Engineering Physics", "", "", ""],
+    "KP": ["Engineering Drawing I", "", "", ""],
+    "BRBD": ["Engineering Drawing I", "", "", ""]
 
 }
 
@@ -214,28 +216,42 @@ def generateDailyRoutine():
 
 
 def teacherSelectionForFirstYear(period):
+    currentSubjectof1stYear = subjectteachers[teachersWhoHaveClassesInFirstYear[period]][0]
     print("Mr {0} go to first year bct and teach them {1}".format(
-        teachersWhoHaveClassesInFirstYear[period], subjectteachers[teachersWhoHaveClassesInFirstYear[period]][0]))
+        teachersWhoHaveClassesInFirstYear[period], currentSubjectof1stYear))
     remaingTeachingHoursInADayForCurrentTeacher = teachingHoursForTeachersInADay[
         teachersWhoHaveClassesInFirstYear[period]]-2
     print(remaingTeachingHoursInADayForCurrentTeacher)
     teachingHoursForTeachersInADay[teachersWhoHaveClassesInFirstYear[period]
                                    ] = remaingTeachingHoursInADayForCurrentTeacher
+
+    remainingTeachingHoursOfCurrentSubject1stYear = teachingHoursForASubject[
+        currentSubjectof1stYear]-2
+    teachingHoursForASubject[currentSubjectof1stYear] = teachingHoursForASubject[currentSubjectof1stYear]-2
+    print(remainingTeachingHoursOfCurrentSubject1stYear)
     return teachersWhoHaveClassesInFirstYear[period]
 
 
 def teacherSelectionForSecondYear(period):
+    currentSubjectof2ndYear = subjectteachers[teachersWhoHaveClassesInSecondYear[period]][1]
+    print(currentSubjectof2ndYear)
     print("Mr {0} go to second year bct and teach them {1}".format(
-        teachersWhoHaveClassesInSecondYear[period], subjectteachers[teachersWhoHaveClassesInSecondYear[period]][1]))
+        teachersWhoHaveClassesInSecondYear[period], currentSubjectof2ndYear))
     remaingTeachingHoursInADayForCurrentTeacher = teachingHoursForTeachersInADay[
         teachersWhoHaveClassesInSecondYear[period]]-2
     print(remaingTeachingHoursInADayForCurrentTeacher)
     teachingHoursForTeachersInADay[teachersWhoHaveClassesInSecondYear[period]
                                    ] = remaingTeachingHoursInADayForCurrentTeacher
+
+    remainingTeachingHoursOfCurrentSubject2ndYear = teachingHoursForASubject[
+        currentSubjectof2ndYear]-2
+    teachingHoursForASubject[currentSubjectof2ndYear] = teachingHoursForASubject[currentSubjectof2ndYear]-2
+    print(remainingTeachingHoursOfCurrentSubject2ndYear)
     return(teachersWhoHaveClassesInSecondYear[period])
 
 
 def teacherSelectionForThirdYear(period):
+    currentSubjectof3rdYear = subjectteachers[teachersWhoHaveClassesInThirdYear[period]][2]
 
     print("Mr {0} go to third year bct and teach them {1}".format(
         teachersWhoHaveClassesInThirdYear[period], subjectteachers[teachersWhoHaveClassesInThirdYear[period]][2]))
@@ -244,10 +260,16 @@ def teacherSelectionForThirdYear(period):
     teachingHoursForTeachersInADay[teachersWhoHaveClassesInThirdYear[period]
                                    ] = remaingTeachingHoursInADayForCurrentTeacher
     print(remaingTeachingHoursInADayForCurrentTeacher)
+    remainingTeachingHoursOfCurrentSubject3rdYear = teachingHoursForASubject[
+        currentSubjectof3rdYear]-2
+    teachingHoursForASubject[currentSubjectof3rdYear] = teachingHoursForASubject[currentSubjectof3rdYear]-2
+    print(remainingTeachingHoursOfCurrentSubject3rdYear)
     return(teachersWhoHaveClassesInThirdYear[period])
 
 
 def teacherSelectionForFourthYear(period):
+    currentSubjectof4thYear = subjectteachers[teachersWhoHaveClassesInFourthYear[period]][3]
+
     print("Mr {0} go to fourth year bct and teach them  {1}".format(
         teachersWhoHaveClassesInFourthYear[period], subjectteachers[teachersWhoHaveClassesInFourthYear[period]][3]))
     remaingTeachingHoursInADayForCurrentTeacher = teachingHoursForTeachersInADay[
@@ -255,6 +277,10 @@ def teacherSelectionForFourthYear(period):
     teachingHoursForTeachersInADay[teachersWhoHaveClassesInFourthYear[period]
                                    ] = remaingTeachingHoursInADayForCurrentTeacher
     print(remaingTeachingHoursInADayForCurrentTeacher)
+    remainingTeachingHoursOfCurrentSubject4thYear = teachingHoursForASubject[
+        currentSubjectof4thYear]-2
+    teachingHoursForASubject[currentSubjectof4thYear] = teachingHoursForASubject[currentSubjectof4thYear]-2
+    print(remainingTeachingHoursOfCurrentSubject4thYear)
     return(teachersWhoHaveClassesInFourthYear[period])
 
 

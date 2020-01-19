@@ -177,6 +177,7 @@ subjectteachers = {
 teachers = ["HPB", "UB", "SRP", "ST", "HNT", "NL", "BRT", "SS", "HKC", "BRB", "PP", "BP", "KRK",
             "HT", "BN", "SN", "SRT", "BHP", "RPP", "RT", "TNU", "AA", "SSM", "AKS", "KRS", "KP", "BRBD"]
 
+
 selectedteachers = []
 firstPeriod = []
 dayWiseSelection = []
@@ -201,8 +202,6 @@ for teachers in subjectteachers.keys():
     if(len(subjectteachers[teachers][3]) != 0):
         teachersWhoHaveClassesInFourthYear.append(
             teachers)
-
-print(teachersWhoHaveClassesInFirstYear)
 
 
 def generateDailyRoutine():
@@ -253,7 +252,7 @@ def teacherSelectionForFirstYear(period):
     currentSubjectof1stYear = subjectteachers[teachersWhoHaveClassesInFirstYear[period]][0]
     currentTeacher = teachersWhoHaveClassesInFirstYear[period]
     year = "first"
-
+    selectedTeachersForADay.append(currentTeacher)
     displayTeacherAndSubject(currentTeacher, year, currentSubjectof1stYear)
     remainingTeachingHoursInADayForCurrentTeacher(currentTeacher)
     displayRTHOfEachSubject(currentSubjectof1stYear)
@@ -265,7 +264,7 @@ def teacherSelectionForSecondYear(period):
     currentSubjectof2ndYear = subjectteachers[teachersWhoHaveClassesInSecondYear[period]][1]
     currentTeacher = teachersWhoHaveClassesInSecondYear[period]
     year = "second"
-
+    selectedTeachersForADay.append(currentTeacher)
     displayTeacherAndSubject(currentTeacher, year, currentSubjectof2ndYear)
     remainingTeachingHoursInADayForCurrentTeacher(currentTeacher)
     displayRTHOfEachSubject(currentSubjectof2ndYear)
@@ -277,7 +276,7 @@ def teacherSelectionForThirdYear(period):
     currentSubjectof3rdYear = subjectteachers[teachersWhoHaveClassesInThirdYear[period]][2]
     currentTeacher = teachersWhoHaveClassesInThirdYear[period]
     year = "third"
-
+    selectedTeachersForADay.append(currentTeacher)
     displayTeacherAndSubject(currentTeacher, year, currentSubjectof3rdYear)
     remainingTeachingHoursInADayForCurrentTeacher(currentTeacher)
     displayRTHOfEachSubject(currentSubjectof3rdYear)
@@ -290,7 +289,7 @@ def teacherSelectionForFourthYear(period):
     currentSubjectof4thYear = subjectteachers[teachersWhoHaveClassesInFourthYear[period]][3]
     currentTeacher = teachersWhoHaveClassesInFourthYear[period]
     year = "fourth"
-
+    selectedTeachersForADay.append(currentTeacher)
     displayTeacherAndSubject(currentTeacher, year, currentSubjectof4thYear)
     remainingTeachingHoursInADayForCurrentTeacher(currentTeacher)
     displayRTHOfEachSubject(currentSubjectof4thYear)
@@ -361,13 +360,20 @@ totalTeachersAvailableForSecondYear = len(teachersWhoHaveClassesInSecondYear)
 totalTeachersAvailableForThirdYear = len(teachersWhoHaveClassesInThirdYear)
 totalTeachersAvailableForFourthYear = len(teachersWhoHaveClassesInFourthYear)
 
+
 Days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
 for daysOfWeek in range(0, 6):
     period = 1
+    print("haha")
+
+    selectedTeachersForADay = []
     for periodsInAday in range(daysOfWeek*4, daysOfWeek*4+4):
+        Day = Days[daysOfWeek]
         print("ROUTINE FOR {0} PERIOD : {1}".format(
             Days[daysOfWeek], period))
 
         checkForDuplicationOfTeacherInMultipleClassesInSamePeriod(
             periodsInAday)
         period += 1
+    print(
+        selectedTeachersForADay)

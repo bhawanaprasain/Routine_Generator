@@ -1,7 +1,5 @@
 
 
-import random
-
 teachingHoursForASubject = {
 
     "Mathematics I": 4,
@@ -34,6 +32,7 @@ teachingHoursForASubject = {
     "Project I": 4
 
 }
+print(sum(teachingHoursForASubject.values()))
 
 teachingHoursForTeachersInADay = {
     "HPB": 4,
@@ -98,10 +97,10 @@ teachingHoursForTeachersInAWeek = {
 }
 
 
-def remainingTeachingHoursOfSubjects():
-    for subjects in teachingHoursForASubject.keys():
-        print(subjects)
-        print(teachingHoursForASubject[subjects]-2)
+# def remainingTeachingHoursOfSubjects():
+#     for subjects in teachingHoursForASubject.keys():
+#         print(subjects)
+#         print(teachingHoursForASubject[subjects]-1)
 
 
 firstYearSubjects = [
@@ -113,6 +112,8 @@ firstYearSubjects = [
     "Basic Electrical Engineering",
 
 ]
+THfor1styear = 4*len(firstYearSubjects)
+
 secondYearSubjects = [
     "Mathematics II",
     "Object Oriented Programming",
@@ -123,6 +124,7 @@ secondYearSubjects = [
     "Electromagnetism"
 
 ]
+THfor2ndyear = 4*len(secondYearSubjects)
 thirdYearSubjects = [
     "Communication English",
     "Probability and Statistics",
@@ -132,6 +134,7 @@ thirdYearSubjects = [
     "Instrumentation II",
     "Data Communication "
 ]
+THfor3rdyear = 4*len(thirdYearSubjects)
 fourthYearSubjects = [
     "ICT Project Management",
     "Organization And Management",
@@ -142,7 +145,7 @@ fourthYearSubjects = [
     "Elective I",
     "Project I"
 ]
-
+THfor4thyear = 4*len(fourthYearSubjects)-4
 subjectteachers = {
     "HPB": ["Computer Programming", "",  "Computer Graphics", ""],
     "UB": ["", "Theory of Computation", "", ""],
@@ -209,9 +212,12 @@ def generateDailyRoutine():
 
 
 def remainingTeachingHoursOfCTIW(currentTeacher):
+
     teachingHoursForTeachersInAWeek[currentTeacher] = teachingHoursForTeachersInAWeek[currentTeacher]-1
     remainingTeachingHoursOfCTIW = teachingHoursForTeachersInAWeek[currentTeacher]
-    print(remainingTeachingHoursOfCTIW)
+    print(" remaining teaching hours for {0} is {1}".format(
+        currentTeacher, teachingHoursForTeachersInAWeek[currentTeacher]))
+    return(remainingTeachingHoursOfCTIW)
 
 
 def remainingTeachingHoursOfEachSubject(currentSubject):
@@ -222,10 +228,17 @@ def remainingTeachingHoursOfEachSubject(currentSubject):
 
 
 def displayRTHOfEachSubject(currentSubject):
-    print("RTH of {0}:  {1}".format(
-        currentSubject,    remainingTeachingHoursOfEachSubject(
-            currentSubject)
-    ))
+    classvalidity = remainingTeachingHoursOfEachSubject(
+        currentSubject)
+    if classvalidity < 0:
+        return classvalidity
+    else:
+
+        # print("RTH of {0}:  {1}".format(
+        #     currentSubject,    remainingTeachingHoursOfEachSubject(
+        #         currentSubject)
+        # ))
+        return classvalidity
 
 
 def remainingTeachingHoursInADayForCurrentTeacher(currentTeacher):
@@ -234,7 +247,6 @@ def remainingTeachingHoursInADayForCurrentTeacher(currentTeacher):
         currentTeacher]-1
     RTHOfcurrentTeacher = teachingHoursForTeachersInADay[
         currentTeacher]
-    print(RTHOfcurrentTeacher)
     return RTHOfcurrentTeacher
 
 
@@ -252,11 +264,17 @@ def teacherSelectionForFirstYear(period):
     currentSubjectof1stYear = subjectteachers[teachersWhoHaveClassesInFirstYear[period]][0]
     currentTeacher = teachersWhoHaveClassesInFirstYear[period]
     year = "first"
-    selectedTeachersForADay.append(currentTeacher)
-    displayTeacherAndSubject(currentTeacher, year, currentSubjectof1stYear)
-    remainingTeachingHoursInADayForCurrentTeacher(currentTeacher)
-    displayRTHOfEachSubject(currentSubjectof1stYear)
-    remainingTeachingHoursOfCTIW(currentTeacher)
+
+    RTHofCurrentSub = displayRTHOfEachSubject(currentSubjectof1stYear)
+
+    if(RTHofCurrentSub >= 0):
+        displayTeacherAndSubject(currentTeacher, year, currentSubjectof1stYear)
+        remainingTeachingHoursOfCTIW(currentTeacher)
+        remainingTeachingHoursInADayForCurrentTeacher(currentTeacher)
+
+    else:
+        teachingHoursForASubject[currentSubjectof1stYear] = teachingHoursForASubject[currentSubjectof1stYear]+1
+        print("LESIURE PERIOD in {0} year".format(year))
     return teachersWhoHaveClassesInFirstYear[period]
 
 
@@ -264,11 +282,17 @@ def teacherSelectionForSecondYear(period):
     currentSubjectof2ndYear = subjectteachers[teachersWhoHaveClassesInSecondYear[period]][1]
     currentTeacher = teachersWhoHaveClassesInSecondYear[period]
     year = "second"
-    selectedTeachersForADay.append(currentTeacher)
-    displayTeacherAndSubject(currentTeacher, year, currentSubjectof2ndYear)
-    remainingTeachingHoursInADayForCurrentTeacher(currentTeacher)
-    displayRTHOfEachSubject(currentSubjectof2ndYear)
-    remainingTeachingHoursOfCTIW(currentTeacher)
+
+    RTHofCurrentSub = displayRTHOfEachSubject(currentSubjectof2ndYear)
+
+    if(RTHofCurrentSub >= 0):
+        displayTeacherAndSubject(currentTeacher, year, currentSubjectof2ndYear)
+        remainingTeachingHoursOfCTIW(currentTeacher)
+        remainingTeachingHoursInADayForCurrentTeacher(currentTeacher)
+
+    else:
+        teachingHoursForASubject[currentSubjectof2ndYear] = teachingHoursForASubject[currentSubjectof2ndYear]+1
+        print("LESIURE PERIOD in {0} year".format(year))
     return(teachersWhoHaveClassesInSecondYear[period])
 
 
@@ -276,11 +300,17 @@ def teacherSelectionForThirdYear(period):
     currentSubjectof3rdYear = subjectteachers[teachersWhoHaveClassesInThirdYear[period]][2]
     currentTeacher = teachersWhoHaveClassesInThirdYear[period]
     year = "third"
-    selectedTeachersForADay.append(currentTeacher)
-    displayTeacherAndSubject(currentTeacher, year, currentSubjectof3rdYear)
-    remainingTeachingHoursInADayForCurrentTeacher(currentTeacher)
-    displayRTHOfEachSubject(currentSubjectof3rdYear)
-    remainingTeachingHoursOfCTIW(currentTeacher)
+
+    RTHofCurrentSub = displayRTHOfEachSubject(currentSubjectof3rdYear)
+
+    if(RTHofCurrentSub >= 0):
+        displayTeacherAndSubject(currentTeacher, year, currentSubjectof3rdYear)
+        remainingTeachingHoursOfCTIW(currentTeacher)
+        remainingTeachingHoursInADayForCurrentTeacher(currentTeacher)
+
+    else:
+        teachingHoursForASubject[currentSubjectof3rdYear] = teachingHoursForASubject[currentSubjectof3rdYear]+1
+        print("LESIURE PERIOD in {0} year".format(year))
 
     return(teachersWhoHaveClassesInThirdYear[period])
 
@@ -289,11 +319,17 @@ def teacherSelectionForFourthYear(period):
     currentSubjectof4thYear = subjectteachers[teachersWhoHaveClassesInFourthYear[period]][3]
     currentTeacher = teachersWhoHaveClassesInFourthYear[period]
     year = "fourth"
-    selectedTeachersForADay.append(currentTeacher)
-    displayTeacherAndSubject(currentTeacher, year, currentSubjectof4thYear)
-    remainingTeachingHoursInADayForCurrentTeacher(currentTeacher)
-    displayRTHOfEachSubject(currentSubjectof4thYear)
-    remainingTeachingHoursOfCTIW(currentTeacher)
+
+    RTHofCurrentSub = displayRTHOfEachSubject(currentSubjectof4thYear)
+
+    if(RTHofCurrentSub >= 0):
+        displayTeacherAndSubject(currentTeacher, year, currentSubjectof4thYear)
+        remainingTeachingHoursOfCTIW(currentTeacher)
+        remainingTeachingHoursInADayForCurrentTeacher(currentTeacher)
+
+    else:
+        teachingHoursForASubject[currentSubjectof4thYear] = teachingHoursForASubject[currentSubjectof4thYear]+1
+        print("LESIURE PERIOD in {0} year".format(year))
 
     return(teachersWhoHaveClassesInFourthYear[period])
 
@@ -361,19 +397,44 @@ totalTeachersAvailableForThirdYear = len(teachersWhoHaveClassesInThirdYear)
 totalTeachersAvailableForFourthYear = len(teachersWhoHaveClassesInFourthYear)
 
 
+def updateRTHOfEachSubject():
+    print(teachingHoursForASubject)
+
+
+def filterRemainingSubjects():
+    remainingSubjects = []
+    for key, value in teachingHoursForASubject.items():
+        if(value > 0):
+            print(key, value)
+            remainingSubjects.append(key)
+            remainingSubjects.append(value)
+
+
+def filterRemainingTeachers():
+    remainingTeachers = []
+    for key, value in teachingHoursForTeachersInAWeek.items():
+        print(key, value)
+        if(value > 0):
+            remainingTeachers.append(key)
+    print(remainingTeachers)
+    print(len(remainingTeachers))
+
+
 Days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
+
+
 for daysOfWeek in range(0, 6):
     period = 1
-    print("haha")
 
     selectedTeachersForADay = []
-    for periodsInAday in range(daysOfWeek*4, daysOfWeek*4+4):
+
+    for periodsInAday in range(daysOfWeek*5, daysOfWeek*5+5):
         Day = Days[daysOfWeek]
         print("ROUTINE FOR {0} PERIOD : {1}".format(
             Days[daysOfWeek], period))
-
         checkForDuplicationOfTeacherInMultipleClassesInSamePeriod(
             periodsInAday)
         period += 1
-    print(
-        selectedTeachersForADay)
+    print(teachingHoursForASubject)
+    filterRemainingSubjects()
+    filterRemainingTeachers()

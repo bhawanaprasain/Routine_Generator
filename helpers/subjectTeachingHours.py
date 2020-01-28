@@ -224,8 +224,7 @@ def remainingTeachingHoursOfEachSubject(currentSubject):
 
     teachingHoursForASubject[currentSubject] = teachingHoursForASubject[currentSubject]-1
     remainingTeachingHours = teachingHoursForASubject[currentSubject]
-    print("Remaining teaching hours of {0} is {1}".format(
-        currentSubject, remainingTeachingHours))
+
     return remainingTeachingHours
 
 
@@ -233,13 +232,13 @@ def displayRTHOfEachSubject(currentSubject):
     classvalidity = remainingTeachingHoursOfEachSubject(
         currentSubject)
     if classvalidity < 0:
+
         return classvalidity
     else:
 
-        # print("RTH of {0}:  {1}".format(
-        #     currentSubject,    remainingTeachingHoursOfEachSubject(
-        #         currentSubject)
-        # ))
+        print("RTH of {0}:  {1}".format(
+            currentSubject,  teachingHoursForASubject[currentSubject])
+        )
         return classvalidity
 
 
@@ -343,8 +342,14 @@ def routineMaker(period):
     periodsForFourthYear = period % totalTeachersAvailableForFourthYear
 
     teacherSelectionForFirstYear(periodsForFirstYear)
+    print("  ")
+
     teacherSelectionForSecondYear(periodsForSecondYear)
+    print("  ")
+
     teacherSelectionForThirdYear(periodsForThirdYear)
+    print("  ")
+
     teacherSelectionForFourthYear(periodsForFourthYear)
     print("  ")
 
@@ -437,6 +442,7 @@ for daysOfWeek in range(0, 6):
         checkForDuplicationOfTeacherInMultipleClassesInSamePeriod(
             periodsInAday)
         period += 1
+        print(" ")
     print(teachingHoursForASubject)
     filterRemainingSubjects()
     filterRemainingTeachers()

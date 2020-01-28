@@ -138,7 +138,6 @@ def routineMaker(period):
     teacherSelectionForFirstYear(period)
     teacherSelectionForSecondYear(period)
     teacherSelectionForThirdYear(period)
-
     teacherSelectionForFourthYear(period)
     print("  ")
 
@@ -149,7 +148,6 @@ def checkForDuplicationOfTeacherInMultipleClassesInSamePeriod(period):
     teacherInThirdYear = teachersWhoHaveClassesInThirdYear[period]
     teacherInFourthYear = teachersWhoHaveClassesInFourthYear[period]
     if(teacherInFirstYear == teacherInSecondYear or teacherInFirstYear == teacherInThirdYear or teacherInFirstYear == teacherInFourthYear or teacherInSecondYear == teacherInThirdYear or teacherInSecondYear == teacherInFourthYear or teacherInThirdYear == teacherInFourthYear):
-        print("We have some conflicts")
         if(teacherInFirstYear == teacherInSecondYear):
             teacherSelectionForFirstYear(period)
             teacherSelectionForSecondYear(period+1)

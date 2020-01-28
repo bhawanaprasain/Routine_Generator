@@ -224,6 +224,8 @@ def remainingTeachingHoursOfEachSubject(currentSubject):
 
     teachingHoursForASubject[currentSubject] = teachingHoursForASubject[currentSubject]-1
     remainingTeachingHours = teachingHoursForASubject[currentSubject]
+    print("Remaining teaching hours of {0} is {1}".format(
+        currentSubject, remainingTeachingHours))
     return remainingTeachingHours
 
 

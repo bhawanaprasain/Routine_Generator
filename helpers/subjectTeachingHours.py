@@ -95,6 +95,38 @@ teachingHoursForTeachersInAWeek = {
     "BRBD": 4
 
 }
+mappedSubjectsAndTeachers = {
+    "Mathematics I": "TNU",
+    "Computer Programming": "HPB",
+    "Engineering Drawing I": "KP",
+    "Engineering Physics": "AKS",
+    "Applied Mechanics": "BP",
+    "Basic Electrical Engineering": "BRB",
+
+    "Mathematics II": "PP",
+    "Object Oriented Programming": "SRP",
+    "Electrical Circuit Theory": "SS",
+    "Theory of Computation": "UB",
+    "Electronics Devices and Circuit": "KRK",
+    "Digital Logic": 'HNT',
+    "Electromagnetism": "HRT",
+
+    "Communication English": "SN",
+    "Probability and Statistics": "PP",
+    "Computer organization and Architecture": "HKC",
+    "Software Engineering": "SRP",
+    "Computer Graphics": "HPB",
+    "Instrumentation II": "ST",
+    "Data Communication": "HNT",
+
+    "ICT Project Management": "NL",
+    "Organization And Management": "RT",
+    "Energy Environment and Society": "RPP",
+    "Distributed System": "BHP",
+    "Computer Networks and Security": "SRT",
+    "Digital Signal Analysis and Processing": "BRT",
+    "Elective I": "HKC",
+    "Project I": "BPK"}
 
 
 # def remainingTeachingHoursOfSubjects():
@@ -427,40 +459,71 @@ def filterRemainingTeachers():
     print(len(remainingTeachers))
 
 
+def returnRemSub(RTHdata, remainingTimeOfEverySubject):
+    count = 0
+    for data in RTHdata:
+        if data != 0:
+            print(remainingTimeOfEverySubject[count*2])
+            count += 1
+
+
 def RTHofBCT1stYear():
     remainingTimeOfEverySubject = []
+    RTHdata = []
+
     for subjects in firstYearSubjects:
         RTH = teachingHoursForASubject[subjects]
         remainingTimeOfEverySubject.append(subjects)
         remainingTimeOfEverySubject.append(RTH)
+        RTHdata.append(RTH)
+
+    print(RTHdata)
     print(remainingTimeOfEverySubject)
+    returnRemSub(RTHdata, remainingTimeOfEverySubject)
 
 
 def RTHofBCT2ndYear():
     remainingTimeOfEverySubject = []
+    RTHdata = []
+
     for subjects in secondYearSubjects:
         RTH = teachingHoursForASubject[subjects]
         remainingTimeOfEverySubject.append(subjects)
         remainingTimeOfEverySubject.append(RTH)
+        RTHdata.append(RTH)
+
+    print(RTHdata)
     print(remainingTimeOfEverySubject)
+    returnRemSub(RTHdata, remainingTimeOfEverySubject)
 
 
 def RTHofBCT3rdYear():
     remainingTimeOfEverySubject = []
+    RTHdata = []
     for subjects in thirdYearSubjects:
         RTH = teachingHoursForASubject[subjects]
         remainingTimeOfEverySubject.append(subjects)
         remainingTimeOfEverySubject.append(RTH)
+        RTHdata.append(RTH)
+
+    print(RTHdata)
     print(remainingTimeOfEverySubject)
+    returnRemSub(RTHdata, remainingTimeOfEverySubject)
 
 
 def RTHofBCT4thYear():
     remainingTimeOfEverySubject = []
+    RTHdata = []
+
     for subjects in fourthYearSubjects:
         RTH = teachingHoursForASubject[subjects]
         remainingTimeOfEverySubject.append(subjects)
         remainingTimeOfEverySubject.append(RTH)
+        RTHdata.append(RTH)
+
+    print(RTHdata)
     print(remainingTimeOfEverySubject)
+    returnRemSub(RTHdata, remainingTimeOfEverySubject)
 
 
 Days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]

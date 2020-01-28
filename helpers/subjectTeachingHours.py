@@ -132,7 +132,7 @@ thirdYearSubjects = [
     "Software Engineering",
     "Computer Graphics",
     "Instrumentation II",
-    "Data Communication "
+    "Data Communication"
 ]
 THfor3rdyear = 4*len(thirdYearSubjects)
 fourthYearSubjects = [
@@ -427,6 +427,42 @@ def filterRemainingTeachers():
     print(len(remainingTeachers))
 
 
+def RTHofBCT1stYear():
+    remainingTimeOfEverySubject = []
+    for subjects in firstYearSubjects:
+        RTH = teachingHoursForASubject[subjects]
+        remainingTimeOfEverySubject.append(subjects)
+        remainingTimeOfEverySubject.append(RTH)
+    print(remainingTimeOfEverySubject)
+
+
+def RTHofBCT2ndYear():
+    remainingTimeOfEverySubject = []
+    for subjects in secondYearSubjects:
+        RTH = teachingHoursForASubject[subjects]
+        remainingTimeOfEverySubject.append(subjects)
+        remainingTimeOfEverySubject.append(RTH)
+    print(remainingTimeOfEverySubject)
+
+
+def RTHofBCT3rdYear():
+    remainingTimeOfEverySubject = []
+    for subjects in thirdYearSubjects:
+        RTH = teachingHoursForASubject[subjects]
+        remainingTimeOfEverySubject.append(subjects)
+        remainingTimeOfEverySubject.append(RTH)
+    print(remainingTimeOfEverySubject)
+
+
+def RTHofBCT4thYear():
+    remainingTimeOfEverySubject = []
+    for subjects in fourthYearSubjects:
+        RTH = teachingHoursForASubject[subjects]
+        remainingTimeOfEverySubject.append(subjects)
+        remainingTimeOfEverySubject.append(RTH)
+    print(remainingTimeOfEverySubject)
+
+
 Days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
 
 
@@ -443,6 +479,11 @@ for daysOfWeek in range(0, 6):
             periodsInAday)
         period += 1
         print(" ")
+    RTHofBCT1stYear()
+    RTHofBCT2ndYear()
+    RTHofBCT3rdYear()
+    RTHofBCT4thYear()
+
     print(teachingHoursForASubject)
     filterRemainingSubjects()
     filterRemainingTeachers()

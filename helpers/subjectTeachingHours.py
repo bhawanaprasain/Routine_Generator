@@ -245,7 +245,7 @@ def generateDailyRoutine():
 
 def remainingTeachingHoursOfCTIW(currentTeacher):
 
-    teachingHoursForTeachersInAWeek[currentTeacher] = teachingHoursForTeachersInAWeek[currentTeacher]-1
+    teachingHoursForTeachersInAWeek[currentTeacher] = teachingHoursForTeachersInAWeek[currentTeacher]-2
     remainingTeachingHoursOfCTIW = teachingHoursForTeachersInAWeek[currentTeacher]
     print(" remaining teaching hours for {0} is {1}".format(
         currentTeacher, teachingHoursForTeachersInAWeek[currentTeacher]))
@@ -254,7 +254,7 @@ def remainingTeachingHoursOfCTIW(currentTeacher):
 
 def remainingTeachingHoursOfEachSubject(currentSubject):
 
-    teachingHoursForASubject[currentSubject] = teachingHoursForASubject[currentSubject]-1
+    teachingHoursForASubject[currentSubject] = teachingHoursForASubject[currentSubject]-2
     remainingTeachingHours = teachingHoursForASubject[currentSubject]
 
     return remainingTeachingHours
@@ -277,7 +277,7 @@ def displayRTHOfEachSubject(currentSubject):
 def remainingTeachingHoursInADayForCurrentTeacher(currentTeacher):
     teachingHoursForTeachersInADay[
         currentTeacher] = teachingHoursForTeachersInADay[
-        currentTeacher]-1
+        currentTeacher]-2
     RTHOfcurrentTeacher = teachingHoursForTeachersInADay[
         currentTeacher]
     return RTHOfcurrentTeacher
@@ -306,7 +306,7 @@ def teacherSelectionForFirstYear(period):
         remainingTeachingHoursInADayForCurrentTeacher(currentTeacher)
 
     else:
-        teachingHoursForASubject[currentSubjectof1stYear] = teachingHoursForASubject[currentSubjectof1stYear]+1
+        teachingHoursForASubject[currentSubjectof1stYear] = teachingHoursForASubject[currentSubjectof1stYear]+2
         RTHofBCT1stYear()
     return teachersWhoHaveClassesInFirstYear[period]
 
@@ -324,7 +324,7 @@ def teacherSelectionForSecondYear(period):
         remainingTeachingHoursInADayForCurrentTeacher(currentTeacher)
 
     else:
-        teachingHoursForASubject[currentSubjectof2ndYear] = teachingHoursForASubject[currentSubjectof2ndYear]+1
+        teachingHoursForASubject[currentSubjectof2ndYear] = teachingHoursForASubject[currentSubjectof2ndYear]+2
         RTHofBCT2ndYear()
     return(teachersWhoHaveClassesInSecondYear[period])
 
@@ -342,7 +342,7 @@ def teacherSelectionForThirdYear(period):
         remainingTeachingHoursInADayForCurrentTeacher(currentTeacher)
 
     else:
-        teachingHoursForASubject[currentSubjectof3rdYear] = teachingHoursForASubject[currentSubjectof3rdYear]+1
+        teachingHoursForASubject[currentSubjectof3rdYear] = teachingHoursForASubject[currentSubjectof3rdYear]+2
         RTHofBCT3rdYear()
     return(teachersWhoHaveClassesInThirdYear[period])
 
@@ -360,7 +360,7 @@ def teacherSelectionForFourthYear(period):
         remainingTeachingHoursInADayForCurrentTeacher(currentTeacher)
 
     else:
-        teachingHoursForASubject[currentSubjectof4thYear] = teachingHoursForASubject[currentSubjectof4thYear]+1
+        teachingHoursForASubject[currentSubjectof4thYear] = teachingHoursForASubject[currentSubjectof4thYear]+2
         RTHofBCT4thYear()
     return(teachersWhoHaveClassesInFourthYear[period])
 
@@ -484,8 +484,8 @@ def RTHofBCT1stYear():
     if(RTHdata.count(0) != len(firstYearSubjects)):
         subject = returnRemSub(RTHdata, remainingTimeOfEverySubject)
         teacher = mappedSubjectsAndTeachers[subject]
-        teachingHoursForTeachersInAWeek[teacher] = teachingHoursForTeachersInAWeek[teacher] - 1
-        teachingHoursForASubject[subject] = teachingHoursForASubject[subject]-1
+        teachingHoursForTeachersInAWeek[teacher] = teachingHoursForTeachersInAWeek[teacher] - 2
+        teachingHoursForASubject[subject] = teachingHoursForASubject[subject]-2
 
         displayTeacherAndSubject(
             mappedSubjectsAndTeachers[subject], year, subject)
@@ -509,8 +509,8 @@ def RTHofBCT2ndYear():
     if(RTHdata.count(0) != len(secondYearSubjects)):
         subject = returnRemSub(RTHdata, remainingTimeOfEverySubject)
         teacher = mappedSubjectsAndTeachers[subject]
-        teachingHoursForTeachersInAWeek[teacher] = teachingHoursForTeachersInAWeek[teacher] - 1
-        teachingHoursForASubject[subject] = teachingHoursForASubject[subject]-1
+        teachingHoursForTeachersInAWeek[teacher] = teachingHoursForTeachersInAWeek[teacher] - 2
+        teachingHoursForASubject[subject] = teachingHoursForASubject[subject]-2
         displayTeacherAndSubject(
             mappedSubjectsAndTeachers[subject], year, subject)
     else:
@@ -530,9 +530,9 @@ def RTHofBCT3rdYear():
     print(RTHdata)
     if(RTHdata.count(0) != len(thirdYearSubjects)):
         subject = returnRemSub(RTHdata, remainingTimeOfEverySubject)
-        teachingHoursForASubject[subject] = teachingHoursForASubject[subject]-1
+        teachingHoursForASubject[subject] = teachingHoursForASubject[subject]-2
         teacher = mappedSubjectsAndTeachers[subject]
-        teachingHoursForTeachersInAWeek[teacher] = teachingHoursForTeachersInAWeek[teacher] - 1
+        teachingHoursForTeachersInAWeek[teacher] = teachingHoursForTeachersInAWeek[teacher] - 2
         displayTeacherAndSubject(
             mappedSubjectsAndTeachers[subject], year, subject)
     else:
@@ -554,8 +554,8 @@ def RTHofBCT4thYear():
     if(RTHdata.count(0) != len(fourthYearSubjects)):
         subject = returnRemSub(RTHdata, remainingTimeOfEverySubject)
         teacher = mappedSubjectsAndTeachers[subject]
-        teachingHoursForTeachersInAWeek[teacher] = teachingHoursForTeachersInAWeek[teacher] - 1
-        teachingHoursForASubject[subject] = teachingHoursForASubject[subject]-1
+        teachingHoursForTeachersInAWeek[teacher] = teachingHoursForTeachersInAWeek[teacher] - 2
+        teachingHoursForASubject[subject] = teachingHoursForASubject[subject]-2
         displayTeacherAndSubject(
             mappedSubjectsAndTeachers[subject], year, subject)
     else:
@@ -570,7 +570,7 @@ for daysOfWeek in range(0, 6):
 
     selectedTeachersForADay = []
 
-    for periodsInAday in range(daysOfWeek*5, daysOfWeek*5+5):
+    for periodsInAday in range(daysOfWeek*3, daysOfWeek*3+3):
         Day = Days[daysOfWeek]
         print("ROUTINE FOR {0} PERIOD : {1}".format(
             Days[daysOfWeek], period))
@@ -583,6 +583,6 @@ for daysOfWeek in range(0, 6):
     RTHofBCT3rdYear()
     RTHofBCT4thYear()
 
-    print(teachingHoursForASubject)
-    filterRemainingSubjects()
-    filterRemainingTeachers()
+    # print(teachingHoursForASubject)
+    # filterRemainingSubjects()
+    # filterRemainingTeachers()

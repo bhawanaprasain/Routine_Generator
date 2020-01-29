@@ -567,10 +567,16 @@ Days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
 
 for daysOfWeek in range(0, 6):
     period = 1
+    if(daysOfWeek == 0 or daysOfWeek == 5):
+        start = daysOfWeek*3
+        end = daysOfWeek*3+3
+    else:
+        start = daysOfWeek*2
+        end = daysOfWeek*2+2
 
     selectedTeachersForADay = []
 
-    for periodsInAday in range(daysOfWeek*3, daysOfWeek*3+3):
+    for periodsInAday in range(start, end):
         Day = Days[daysOfWeek]
         print("ROUTINE FOR {0} PERIOD : {1}".format(
             Days[daysOfWeek], period))
@@ -578,11 +584,3 @@ for daysOfWeek in range(0, 6):
             periodsInAday)
         period += 1
         print(" ")
-    RTHofBCT1stYear()
-    RTHofBCT2ndYear()
-    RTHofBCT3rdYear()
-    RTHofBCT4thYear()
-
-    # print(teachingHoursForASubject)
-    # filterRemainingSubjects()
-    # filterRemainingTeachers()

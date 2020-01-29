@@ -29,7 +29,7 @@ teachingHoursForASubject = {
     "Computer Networks and Security": 4,
     "Digital Signal Analysis and Processing": 4,
     "Elective I": 4,
-    "Project I": 4
+
 
 }
 print(sum(teachingHoursForASubject.values()))
@@ -126,7 +126,7 @@ mappedSubjectsAndTeachers = {
     "Computer Networks and Security": "SRT",
     "Digital Signal Analysis and Processing": "BRT",
     "Elective I": "HKC",
-    "Project I": "BPK"}
+}
 
 
 # def remainingTeachingHoursOfSubjects():
@@ -175,7 +175,7 @@ fourthYearSubjects = [
     "Computer Networks and Security",
     "Digital Signal Analysis and Processing",
     "Elective I",
-    "Project I"
+
 ]
 THfor4thyear = 4*len(fourthYearSubjects)-4
 subjectteachers = {
@@ -307,7 +307,7 @@ def teacherSelectionForFirstYear(period):
 
     else:
         teachingHoursForASubject[currentSubjectof1stYear] = teachingHoursForASubject[currentSubjectof1stYear]+1
-        print("LESIURE PERIOD in {0} year".format(year))
+        RTHofBCT1stYear()
     return teachersWhoHaveClassesInFirstYear[period]
 
 
@@ -325,7 +325,7 @@ def teacherSelectionForSecondYear(period):
 
     else:
         teachingHoursForASubject[currentSubjectof2ndYear] = teachingHoursForASubject[currentSubjectof2ndYear]+1
-        print("LESIURE PERIOD in {0} year".format(year))
+        RTHofBCT2ndYear()
     return(teachersWhoHaveClassesInSecondYear[period])
 
 
@@ -343,8 +343,7 @@ def teacherSelectionForThirdYear(period):
 
     else:
         teachingHoursForASubject[currentSubjectof3rdYear] = teachingHoursForASubject[currentSubjectof3rdYear]+1
-        print("LESIURE PERIOD in {0} year".format(year))
-
+        RTHofBCT3rdYear()
     return(teachersWhoHaveClassesInThirdYear[period])
 
 
@@ -362,8 +361,7 @@ def teacherSelectionForFourthYear(period):
 
     else:
         teachingHoursForASubject[currentSubjectof4thYear] = teachingHoursForASubject[currentSubjectof4thYear]+1
-        print("LESIURE PERIOD in {0} year".format(year))
-
+        RTHofBCT4thYear()
     return(teachersWhoHaveClassesInFourthYear[period])
 
 
@@ -463,13 +461,17 @@ def returnRemSub(RTHdata, remainingTimeOfEverySubject):
     count = 0
     for data in RTHdata:
         if data != 0:
-            print(remainingTimeOfEverySubject[count*2])
+
+            subject = remainingTimeOfEverySubject[count*2]
+            return subject
+        else:
             count += 1
 
 
 def RTHofBCT1stYear():
     remainingTimeOfEverySubject = []
     RTHdata = []
+    year = "first"
 
     for subjects in firstYearSubjects:
         RTH = teachingHoursForASubject[subjects]
@@ -479,12 +481,23 @@ def RTHofBCT1stYear():
 
     print(RTHdata)
     print(remainingTimeOfEverySubject)
-    returnRemSub(RTHdata, remainingTimeOfEverySubject)
+    if(RTHdata.count(0) != len(firstYearSubjects)):
+        subject = returnRemSub(RTHdata, remainingTimeOfEverySubject)
+        teacher = mappedSubjectsAndTeachers[subject]
+        teachingHoursForTeachersInAWeek[teacher] = teachingHoursForTeachersInAWeek[teacher] - 1
+        teachingHoursForASubject[subject] = teachingHoursForASubject[subject]-1
+
+        displayTeacherAndSubject(
+            mappedSubjectsAndTeachers[subject], year, subject)
+
+    else:
+        print("LESIURE PERIOD in {0} year".format(year))
 
 
 def RTHofBCT2ndYear():
     remainingTimeOfEverySubject = []
     RTHdata = []
+    year = "second"
 
     for subjects in secondYearSubjects:
         RTH = teachingHoursForASubject[subjects]
@@ -493,13 +506,21 @@ def RTHofBCT2ndYear():
         RTHdata.append(RTH)
 
     print(RTHdata)
-    print(remainingTimeOfEverySubject)
-    returnRemSub(RTHdata, remainingTimeOfEverySubject)
+    if(RTHdata.count(0) != len(secondYearSubjects)):
+        subject = returnRemSub(RTHdata, remainingTimeOfEverySubject)
+        teacher = mappedSubjectsAndTeachers[subject]
+        teachingHoursForTeachersInAWeek[teacher] = teachingHoursForTeachersInAWeek[teacher] - 1
+        teachingHoursForASubject[subject] = teachingHoursForASubject[subject]-1
+        displayTeacherAndSubject(
+            mappedSubjectsAndTeachers[subject], year, subject)
+    else:
+        print("LESIURE PERIOD in {0} year".format(year))
 
 
 def RTHofBCT3rdYear():
     remainingTimeOfEverySubject = []
     RTHdata = []
+    year = "third"
     for subjects in thirdYearSubjects:
         RTH = teachingHoursForASubject[subjects]
         remainingTimeOfEverySubject.append(subjects)
@@ -507,13 +528,21 @@ def RTHofBCT3rdYear():
         RTHdata.append(RTH)
 
     print(RTHdata)
-    print(remainingTimeOfEverySubject)
-    returnRemSub(RTHdata, remainingTimeOfEverySubject)
+    if(RTHdata.count(0) != len(thirdYearSubjects)):
+        subject = returnRemSub(RTHdata, remainingTimeOfEverySubject)
+        teachingHoursForASubject[subject] = teachingHoursForASubject[subject]-1
+        teacher = mappedSubjectsAndTeachers[subject]
+        teachingHoursForTeachersInAWeek[teacher] = teachingHoursForTeachersInAWeek[teacher] - 1
+        displayTeacherAndSubject(
+            mappedSubjectsAndTeachers[subject], year, subject)
+    else:
+        print("LESIURE PERIOD in {0} year".format(year))
 
 
 def RTHofBCT4thYear():
     remainingTimeOfEverySubject = []
     RTHdata = []
+    year = "fourth"
 
     for subjects in fourthYearSubjects:
         RTH = teachingHoursForASubject[subjects]
@@ -522,8 +551,15 @@ def RTHofBCT4thYear():
         RTHdata.append(RTH)
 
     print(RTHdata)
-    print(remainingTimeOfEverySubject)
-    returnRemSub(RTHdata, remainingTimeOfEverySubject)
+    if(RTHdata.count(0) != len(fourthYearSubjects)):
+        subject = returnRemSub(RTHdata, remainingTimeOfEverySubject)
+        teacher = mappedSubjectsAndTeachers[subject]
+        teachingHoursForTeachersInAWeek[teacher] = teachingHoursForTeachersInAWeek[teacher] - 1
+        teachingHoursForASubject[subject] = teachingHoursForASubject[subject]-1
+        displayTeacherAndSubject(
+            mappedSubjectsAndTeachers[subject], year, subject)
+    else:
+        print("LESIURE PERIOD in {0} year".format(year))
 
 
 Days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
